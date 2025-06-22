@@ -10,7 +10,6 @@
 * ⚙️ **Backend API**: [https://chat-5km8.onrender.com](https://chat-5km8.onrender.com)
 * 💻 **Frontend Repo**: [https://github.com/subramanyamchoda/chat\_client](https://github.com/subramanyamchoda/chat_client)
 * 🛠️ **Backend Repo**: [https://github.com/subramanyamchoda/chat\_backend](https://github.com/subramanyamchoda/chat_backend)
-* 👤 **Developer Profile**: [https://www.linkedin.com/in/subramanyamchoda/](https://www.linkedin.com/in/subramanyamchoda/)
 
 🎥 **Watch the demo** for a full walkthrough of live messaging, media sharing, and user tracking.
 
