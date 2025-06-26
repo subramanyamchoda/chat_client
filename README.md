@@ -52,6 +52,12 @@
 | Deployment | Vercel (Frontend), Render (API) |
 
 ---
+<p align="center">
+  <img src="https://subramanyamchoda.vercel.app/pandachat1.png" width="400"/>
+  <img src="https://subramanyamchoda.vercel.app/pandachat2.png" width="400"/>
+  <img src="https://subramanyamchoda.vercel.app/pandachat3.png" width="400"/>
+</p>
+
 
 ## 🚀 Getting Started
 
