@@ -382,7 +382,7 @@ const [zoomLevel, setZoomLevel] = useState(1);
         📁 Shared Files
       </div>
 
-      {showCall && <CallPage />}
+      {showCall && <CallPage name={name} />}
     </div>
 
     
