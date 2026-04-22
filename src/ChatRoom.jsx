@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
 import axios from 'axios';
+import CallPage from './CallPage';
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -11,7 +12,10 @@ import { motion } from 'framer-motion';
 const ChatRoom = ({ name, role }) => {
   const adRef = useRef(null);
   const socket = useRef(null);
-
+    const [zoomImage, setZoomImage] = useState(null);
+const [zoomLevel, setZoomLevel] = useState(1);
+  const [showCall, setShowCall] = useState(false);
+  
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState('');
   const [file, setFile] = useState(null);
@@ -85,11 +89,17 @@ const ChatRoom = ({ name, role }) => {
     window.addEventListener('keydown', handleF1Press);
 
     return () => {
-      socket.current.emit('userDisconnected', role);
-      socket.current.disconnect();
-      socket.current.off();
+     socket.current.emit('userDisconnected', role);
+      socket.current.off('message');
+      socket.current.off('deleteMessage');
+      socket.current.off('updateOnlineUsers');
+      socket.current.off('userStatus');
+      socket.current.off('typing');
+      socket.current.off('stopTyping');
+      socket.current.off('readMessage');
       window.removeEventListener('keydown', handleTabPress);
       window.removeEventListener('keydown', handleF1Press);
+      socket.current.disconnect();
     };
   }, [role]);
 
@@ -363,10 +373,19 @@ const ChatRoom = ({ name, role }) => {
     animate={{ opacity: 1 }}
     transition={{ duration: 0.5 }}
   >
-    <div className="bg-purple-600 text-white text-xl font-semibold py-4 px-6 text-center">
-      📁 Shared Files
+    <div>
+      <div
+        className="bg-purple-600 text-white text-xl font-semibold py-4 px-6 text-center cursor-pointer"
+        onClick={() => setShowCall(true)}
+        
+      >
+        📁 Shared Files
+      </div>
+
+      {showCall && <CallPage />}
     </div>
 
+    
     <div className="flex-1 overflow-y-auto p-4 space-y-2">
       {files.length === 0 ? (
         <p className="text-center text-gray-500">No files uploaded yet.</p>
